@@ -113,9 +113,3 @@ jobs:
       with:
         name: Simplify_OpenWrt
         path: ${{ env.FIRMWARE }}
-
-    - name: Upload firmware to cowtransfer
-      if: env.UPLOAD_COWTRANSFER == 'true' && !cancelled()
-      run: |
-        curl -sL https://git.io/cowtransfer | sh
-        ./cowtransfer-uploader -s -p 8 ${FIRMWARE}
